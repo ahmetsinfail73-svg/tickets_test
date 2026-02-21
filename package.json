@@ -34,6 +34,7 @@
     "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/icons": "^4.71.1",
     "@taiga-ui/kit": "^4.71.1",
+    "@taiga-ui/layout": "^4.71.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
