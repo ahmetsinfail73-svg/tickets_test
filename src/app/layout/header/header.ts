@@ -1,20 +1,12 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TuiButton, TuiPopup } from '@taiga-ui/core';
 import { TuiDrawer } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    TuiDrawer,
-    TuiPopup,
-    NgTemplateOutlet,
-    TuiButton,
-  ],
+  imports: [RouterLink, RouterLinkActive, TuiDrawer, TuiPopup, NgTemplateOutlet, TuiButton],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
