@@ -4,17 +4,17 @@ export interface ITicket {
   updatedAt: string;
   title: string;
   description: string;
-  priority: EnumPRIORITY;
-  status: EnumSTATUS;
+  priority: EnumPriority;
+  status: EnumStatus;
 }
 
-export enum EnumPRIORITY {
+export enum EnumPriority {
   LOW = 'low',
   MEDIUM = 'medium',
   HIGH = 'high',
 }
 
-export enum EnumSTATUS {
+export enum EnumStatus {
   OPEN = 'open',
   IN_PROGRESS = 'in_progress',
   CLOSED = 'closed',
