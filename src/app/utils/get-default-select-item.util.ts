@@ -3,5 +3,5 @@ import { ISelectItem } from '../models/select-item.model';
 export const getDefaultSelectItem = (items: ISelectItem[]) => {
   const defaultItem = items.find((item) => item?.isDefault);
 
-  return defaultItem || items[0];
+  return defaultItem?.value || items[0]?.value;
 };
