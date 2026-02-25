@@ -1,8 +1,8 @@
-export const getNullObject = (obj: Record<string, any>) => {
+export const getNullObject = (arr: { key: string }[]) => {
   const newObj: Record<string, null> = {};
 
-  Object.keys(obj).forEach((key) => {
-    newObj[key] = null;
+  arr.forEach((item) => {
+    newObj[item.key] = null;
   });
 
   return newObj;
