@@ -52,5 +52,9 @@
         >{{ link.label }}</a
       >
     }
+
+    <button tuiButton type="button" appearance="icon" size="m" (click)="darkMode.set(!darkMode())">
+      <tui-icon [icon]="darkMode() ? '@tui.moon' : '@tui.sun'" />
+    </button>
   </nav>
 </ng-template>
