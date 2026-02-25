@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  p {
+    color: var(--tui-text-secondary);
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
