@@ -1,0 +1,16 @@
+<form class="tickets_filters" [formGroup]="form">
+  <div class="filters_list">
+    @for (input of inputs; track input.label) {
+      <app-input [props]="input" />
+    }
+  </div>
+
+  <div class="filters_actions">
+    <button tuiButton type="submit" appearance="secondary" (click)="applyFilters()" size="m">
+      Применить
+    </button>
+    <button tuiButton type="button" appearance="flat" (click)="resetFilters()" size="m">
+      Сброс
+    </button>
+  </div>
+</form>
