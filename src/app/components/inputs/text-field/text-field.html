@@ -1,0 +1,12 @@
+<label tuiLabel class="input_item">
+  <span tuiTitle>{{ props.label }}</span>
+
+  <tui-textfield tuiTextfieldSize="m" iconStart="{{ props.icon }}">
+    <input
+      placeholder="{{ props.placeholder }}"
+      tuiTextfield
+      [formControl]="props.control"
+      tuiTextfieldSize="m"
+    />
+  </tui-textfield>
+</label>

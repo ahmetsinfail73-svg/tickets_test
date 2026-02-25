@@ -1,0 +1,13 @@
+@if (props.isTextarea) {
+  <app-textarea [props]="props" />
+} @else if (props.items) {
+  <app-select
+    [props]="{
+		...props,
+		items: props.items
+	}"
+  />
+} @else {
+  <app-text-field [props]="props" />
+}
+<tui-error [formControl]="props.control" [error]="[] | tuiFieldError | async" />
