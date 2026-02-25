@@ -1,13 +1,13 @@
 import { FormGroup } from '@angular/forms';
 
 export const transformForm = <T = Record<string, string>>(form: FormGroup) => {
-  const values: any = {};
+  const values: Record<string, any> = {};
 
   Object.keys(form.controls).forEach((key) => {
     const controlValue = form.get(key)?.value;
 
     values[key] =
-      typeof controlValue === 'object' && controlValue !== null ? controlValue.value : controlValue;
+      controlValue && typeof controlValue === 'object' ? controlValue.value : controlValue;
   });
 
   return values as T;
