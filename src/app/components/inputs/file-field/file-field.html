@@ -2,7 +2,7 @@
   <span tuiTitle>{{ props.label }}</span>
 
   <label tuiInputFiles>
-    <input tuiInputFiles [formControl]="fileControl" (change)="onChange($event.target.files)" />
+    <input tuiInputFiles [formControl]="fileControl" (change)="onChange($event.target.files)" [accept]="getAccept" />
     <ng-template let-dragged>
       @if (dragged) {
         <div class="file_content">
@@ -31,6 +31,7 @@
             (remove)="removeFile(file)"
             [state]="file.isDone ? 'normal' : 'loading'"
             [file]="file.file"
+            showDelete="always"
           />
 
           <div class="file_progress">

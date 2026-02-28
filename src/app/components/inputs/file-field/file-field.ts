@@ -8,7 +8,7 @@ import { NotificationService } from '../../../services/notification.service';
 import { IInputProps } from '../input-props.types';
 
 interface IFile {
-  id: string;
+  id: number;
   progress: number;
   isDone: boolean;
   file: File | { name: string; size: number };
@@ -23,6 +23,8 @@ interface IFile {
 export class FileField implements OnInit {
   @Input() props!: IInputProps;
 
+  @Input() onSuccessDelete?: () => void;
+
   protected readonly fileControl = new FormControl();
 
   protected readonly files = signal<IFile[]>([]);
@@ -33,7 +35,7 @@ export class FileField implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.props.defaultValue) {
+    if (this.props?.defaultValue) {
       this.files.set(
         this.props.defaultValue.map((file: IAttachment) => ({
           file: {
@@ -42,7 +44,7 @@ export class FileField implements OnInit {
           },
           isDone: true,
           progress: 100,
-          id: crypto.randomUUID(),
+          id: file.id,
         })),
       );
     }
@@ -92,7 +94,21 @@ export class FileField implements OnInit {
   }
 
   protected removeFile(file: IFile) {
-    this.files.update((prev) => prev.filter((f) => f.id !== file.id));
+    this.attachmentService.deleteAttachment(file.id).subscribe({
+      next: (response) => {
+        this.notificationService.success(response.message);
+
+        if (this.onSuccessDelete) {
+          this.onSuccessDelete();
+        }
+
+        this.files.update((prev) => prev.filter((f) => f.id !== file.id));
+      },
+    });
+  }
+
+  protected get getAccept() {
+    return this.props.meta?.['accept'] || '';
   }
 
   private isMaxCount() {
@@ -102,6 +118,6 @@ export class FileField implements OnInit {
   }
 
   private generateId() {
-    return crypto.randomUUID();
+    return Math.floor(Math.random() * 1000000);
   }
 }
