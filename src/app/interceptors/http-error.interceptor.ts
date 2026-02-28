@@ -8,12 +8,9 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error) => {
-      const errorMessage =
-        typeof error === 'string'
-          ? error
-          : error?.error?.message || error?.message || 'Неизвестная ошибка';
-
-      notificationService.error(errorMessage);
+      if (error?.error?.message) {
+        notificationService.error(error?.error?.message);
+      }
 
       return throwError(() => error);
     }),
