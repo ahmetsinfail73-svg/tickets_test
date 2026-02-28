@@ -1,12 +1,14 @@
-@if (props.isTextarea) {
+@if (props.mode === 'textarea') {
   <app-textarea [props]="props" />
-} @else if (props.items) {
+} @else if (props.mode === 'select') {
   <app-select
     [props]="{
 		...props,
-		items: props.items
+		items: props.items!
 	}"
   />
+} @else if (props.mode === 'file') {
+  <app-file-field [props]="props" />
 } @else {
   <app-text-field [props]="props" />
 }

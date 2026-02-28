@@ -1,13 +1,9 @@
 import { FormControl } from '@angular/forms';
+import { IField } from '../../models/field.model';
 import { ISelectItem } from '../../models/select-item.model';
 
-export interface IInputProps {
-  label: string;
-  placeholder?: string;
+export interface IInputProps extends IField {
   control: FormControl;
-  icon: string;
-  defaultValue?: string;
-  isTextarea?: boolean;
 }
 
 export interface ISelectProps extends IInputProps {
