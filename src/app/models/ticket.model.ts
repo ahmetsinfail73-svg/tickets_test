@@ -1,13 +1,15 @@
+import { IAttachment } from './attachment.model';
 import { IPaginationMeta } from './pagination.model';
 
 export interface ITicket {
   id: number;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
   title: string;
   description: string;
   priority: EnumPriority;
   status: EnumStatus;
+  attachments: IAttachment[];
 }
 
 export enum EnumPriority {
