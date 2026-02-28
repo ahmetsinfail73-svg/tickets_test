@@ -199,6 +199,12 @@ switch ($resource) {
                 respond(405, 'Метод не разрешён');
         }
         break;
+    case "attachments":
+        switch ($method) {
+            case "GET":
+                require __DIR__ . "/api/attachments/attachments_download.php";
+                break;
+        }
 
     default:
         respond(404, 'Ресурс не найден');

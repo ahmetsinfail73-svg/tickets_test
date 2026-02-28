@@ -17,7 +17,7 @@ $status = "open";
 $stmt = db()->prepare("INSERT INTO tickets (title, description, priority, status) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $title, $description, $priority, $status);
 if ($stmt->execute()) {
-    respond(201, 'Тикет успешно создан');
+    respond(201, ['message' => 'Тикет успешно создан', 'id' => $stmt->insert_id]);
 } else {
     respond(500, 'Ошибка базы данных: ' . $stmt->error);
 }
