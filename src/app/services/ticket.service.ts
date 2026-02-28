@@ -4,6 +4,7 @@ import { environment } from '../environmets/environmets';
 import { ISuccessMessage } from '../models/success-message.model';
 import {
   ICreateTicketDto,
+  ICreateTicketResponse,
   ITicket,
   ITicketsResponse,
   IUpdateTicketDto,
@@ -26,7 +27,7 @@ export class TicketService {
   }
 
   createTicket(data: ICreateTicketDto) {
-    return this.http.post<ISuccessMessage>(this.baseUrl, data);
+    return this.http.post<ICreateTicketResponse>(this.baseUrl, data);
   }
 
   updateTicket(data: IUpdateTicketDto) {
