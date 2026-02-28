@@ -10,4 +10,5 @@ export interface IField {
   items?: ISelectItem[];
   validators?: ValidatorFn[];
   defaultValue?: any;
+  meta?: Record<string, any>;
 }
