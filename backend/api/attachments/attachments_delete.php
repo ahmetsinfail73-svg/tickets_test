@@ -13,6 +13,8 @@ if ($id <= 0) {
 $sql = "select filepath from ticket_attachments where id = ?";
 $result = db()->execute_query($sql, [$id]);
 
+deleteFile([$result->fetch_assoc()['filepath']]);
+
 $sql = "DELETE FROM ticket_attachments WHERE id = ?";
 $result = db()->execute_query($sql, [$id]);
 if ($result === false) {

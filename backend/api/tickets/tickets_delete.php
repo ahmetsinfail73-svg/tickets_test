@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../../config/database.php';
 
-require_once DIR . '/../../config/delete_attachment_files.php';
+require_once __DIR__ . '/../../config/delete_attachment_files.php';
 
 
 $data = json_decode(file_get_contents('php://input'), true);
