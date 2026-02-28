@@ -1,5 +1,6 @@
 import { IAttachment } from './attachment.model';
 import { IPaginationMeta } from './pagination.model';
+import { ISuccessMessage } from './success-message.model';
 
 export interface ITicket {
   id: number;
@@ -34,4 +35,8 @@ export interface IUpdateTicketDto extends Pick<
 export interface ITicketsResponse {
   tickets: ITicket[];
   meta: IPaginationMeta;
+}
+
+export interface ICreateTicketResponse extends ISuccessMessage {
+  id: number;
 }
