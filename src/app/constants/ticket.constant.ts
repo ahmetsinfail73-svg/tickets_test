@@ -6,7 +6,7 @@ export enum EnumTicket {
   PRIORITY = 'priority',
   TITLE = 'title',
   DESCRIPTION = 'description',
-  FILES = 'files',
+  ATTACHMENTS = 'attachments',
 }
 
 export const TICKET_STATUS: ISelectItem[] = [
