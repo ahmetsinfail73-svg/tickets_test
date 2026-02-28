@@ -5,11 +5,7 @@ import { getFormControl } from './get-form-control.util';
 
 export const createInputList = (fields: IField[], form: FormGroup): TypeInput[] => {
   return fields.map((field) => ({
-    label: field.label,
-    placeholder: field.placeholder,
-    icon: field.icon,
+    ...field,
     control: getFormControl(form, field.key),
-    isTextarea: field.isTextarea,
-    items: field.items,
   }));
 };
