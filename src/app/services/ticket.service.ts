@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environmets/environmets';
-import { ICreateTicketDto, ITicketsResponse, IUpdateTicketDto } from '../models/ticket.model';
+import { ISuccessMessage } from '../models/success-message.model';
+import {
+  ICreateTicketDto,
+  ITicket,
+  ITicketsResponse,
+  IUpdateTicketDto,
+} from '../models/ticket.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,19 +22,19 @@ export class TicketService {
   }
 
   getTicket(id: string) {
-    return this.http.get<ITicketsResponse>(this.baseUrl, { params: { id } });
+    return this.http.get<ITicket>(`${this.baseUrl}/${id}`);
   }
 
   createTicket(data: ICreateTicketDto) {
-    return this.http.post(this.baseUrl, data);
+    return this.http.post<ISuccessMessage>(this.baseUrl, data);
   }
 
   updateTicket(data: IUpdateTicketDto) {
-    return this.http.put(this.baseUrl, data);
+    return this.http.put<ISuccessMessage>(this.baseUrl, data);
   }
 
-  deleteTicket(id: string) {
-    return this.http.delete(this.baseUrl, {
+  deleteTicket(id: number) {
+    return this.http.delete<ISuccessMessage>(this.baseUrl, {
       body: { id },
     });
   }
