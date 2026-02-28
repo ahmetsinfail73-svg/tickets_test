@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { WA_LOCAL_STORAGE, WA_WINDOW } from '@ng-web-apis/common';
 import { TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton, TuiIcon, TuiPopup } from '@taiga-ui/core';
 import { TuiDrawer } from '@taiga-ui/kit';
+import { Path } from '../../constants/path.constant';
 
 @Component({
   selector: 'app-header',
@@ -27,9 +28,11 @@ export class Header {
   private readonly media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
 
   protected readonly links = [
-    { label: 'Заявки', path: '/' },
-    { label: 'Создать заявку', path: '/create' },
+    { label: 'Заявки', path: Path.HOME },
+    { label: 'Создать заявку', path: Path.CREATE_TICKET },
   ];
+
+  protected readonly homePath = Path.HOME;
 
   protected readonly open = signal(false);
 
