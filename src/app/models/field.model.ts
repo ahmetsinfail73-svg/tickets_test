@@ -6,7 +6,7 @@ export interface IField {
   label: string;
   placeholder?: string;
   icon: string;
-  isTextarea?: boolean;
+  mode?: 'textarea' | 'select' | 'file';
   items?: ISelectItem[];
   validators?: ValidatorFn[];
   defaultValue?: any;
