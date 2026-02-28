@@ -61,5 +61,11 @@ $stmt = db()->prepare(
 );
 $stmt->bind_param('isi', $ticketId, $storedName, $size);
 $stmt->execute();
+$attachmentId = $stmt->insert_id;
 
-respond(201, ['attachment_id' => $stmt->insert_id]);
+$stmtGet = db()->prepare('SELECT id, ticket_id, filepath, size, uploaded_at FROM ticket_attachments WHERE id = ?');
+$stmtGet->bind_param('i', $attachmentId);
+$stmtGet->execute();
+$attachment = $stmtGet->get_result()->fetch_assoc();
+
+respond(201, $attachment);

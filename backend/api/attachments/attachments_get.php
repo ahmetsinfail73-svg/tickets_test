@@ -28,8 +28,4 @@ while ($row = $result->fetch_assoc()) {
     $attachments[] = $row;
 }
 
-respond(200, [
-    'ticket_id' => $ticketId,
-    'attachments' => $attachments,
-    'count' => count($attachments)
-]);
+respond(200, $attachments);
