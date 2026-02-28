@@ -1,3 +1,5 @@
+import { IPaginationMeta } from './pagination.model';
+
 export interface ITicket {
   id: number;
   createdAt: string;
@@ -18,4 +20,16 @@ export enum EnumStatus {
   OPEN = 'open',
   IN_PROGRESS = 'in_progress',
   CLOSED = 'closed',
+}
+
+export interface ICreateTicketDto extends Pick<ITicket, 'description' | 'title' | 'priority'> {}
+
+export interface IUpdateTicketDto extends Pick<
+  ITicket,
+  'description' | 'title' | 'priority' | 'status' | 'id'
+> {}
+
+export interface ITicketsResponse {
+  tickets: ITicket[];
+  meta: IPaginationMeta;
 }
