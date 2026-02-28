@@ -218,3 +218,7 @@
 172.27.0.1 - - [28/Feb/2026:12:19:07 +0000] "GET /api/tickets/get HTTP/1.1" 200 12644 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
 172.27.0.1 - - [28/Feb/2026:12:19:08 +0000] "GET /api/tickets/ HTTP/1.1" 200 12644 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
 172.27.0.1 - - [28/Feb/2026:12:19:08 +0000] "GET /favicon.ico HTTP/1.1" 404 188 "http://localhost:8080/api/tickets/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+172.18.0.1 - - [28/Feb/2026:18:24:07 +0000] "GET /api/tickets HTTP/1.1" 200 633 "-" "PostmanRuntime/7.51.1"
+172.18.0.1 - - [28/Feb/2026:18:24:24 +0000] "DELETE /api/tickets?id=1 HTTP/1.1" 400 105 "-" "PostmanRuntime/7.51.1"
+172.18.0.1 - - [28/Feb/2026:18:24:50 +0000] "DELETE /api/tickets? HTTP/1.1" 200 92 "-" "PostmanRuntime/7.51.1"
+172.18.0.1 - - [28/Feb/2026:18:24:58 +0000] "GET /api/tickets HTTP/1.1" 200 302 "-" "PostmanRuntime/7.51.1"
