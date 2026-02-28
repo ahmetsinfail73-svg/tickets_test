@@ -1,1 +1,3 @@
-<tui-pagination [index]="page" [length]="length" (indexChange)="goToPage($event)" />
+@if (length() >= 1) {
+  <tui-pagination [index]="index()" [length]="length()" (indexChange)="goToPage($event)" />
+}

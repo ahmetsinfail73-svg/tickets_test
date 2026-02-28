@@ -1,0 +1,24 @@
+<a [routerLink]="ticketPath(ticket.id)" class="ticket_item">
+  <div class="ticket_header">
+    <tui-line-clamp
+      [content]="ticket.title"
+      [linesLimit]="2"
+      [lineHeight]="30"
+      class="ticket_title"
+    />
+
+    <div [appearance]="ticket.priority | appearance: priorityAppearance" tuiBadge>
+      {{ ticket.priority | uppercase }}
+    </div>
+  </div>
+
+  <tui-line-clamp [content]="ticket.description" [linesLimit]="2" class="ticket_description" />
+
+  <div class="ticket_footer">
+    <div [appearance]="ticket.status | appearance: statusAppearance" tuiBadge>
+      {{ ticket.status | uppercase }}
+    </div>
+
+    <span>{{ ticket.createdAt | date: 'dd.MM.yyyy HH:mm' }}</span>
+  </div>
+</a>

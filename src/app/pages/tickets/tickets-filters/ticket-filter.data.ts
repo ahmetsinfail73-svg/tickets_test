@@ -42,6 +42,7 @@ export const TICKET_FILTER_FIELDS: IField[] = [
     icon: '@tui.chart-bar-big',
     items: TICKET_FILTERS[EnumTicket.STATUS],
     defaultValue: getDefaultSelectItem(TICKET_FILTERS[EnumTicket.STATUS]),
+    mode: 'select',
   },
   {
     key: EnumTicket.PRIORITY,
@@ -49,6 +50,7 @@ export const TICKET_FILTER_FIELDS: IField[] = [
     icon: '@tui.octagon-alert',
     items: TICKET_FILTERS[EnumTicket.PRIORITY],
     defaultValue: getDefaultSelectItem(TICKET_FILTERS[EnumTicket.PRIORITY]),
+    mode: 'select',
   },
   {
     key: EnumSearchParam.SORT,
@@ -56,5 +58,6 @@ export const TICKET_FILTER_FIELDS: IField[] = [
     icon: '@tui.arrow-down-up',
     items: TICKET_FILTERS[EnumSearchParam.SORT],
     defaultValue: getDefaultSelectItem(TICKET_FILTERS[EnumSearchParam.SORT]),
+    mode: 'select',
   },
 ];

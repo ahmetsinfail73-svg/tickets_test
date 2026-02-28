@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges, signal, SimpleChanges } from '@angular/core';
 import { TuiPagination } from '@taiga-ui/kit';
+import { IPaginationMeta } from '../../../models/ticket.model';
 import { RouterService } from '../../../services/router.service';
 
 @Component({
@@ -9,63 +9,36 @@ import { RouterService } from '../../../services/router.service';
   templateUrl: './tickets-pagination.html',
   styleUrl: './tickets-pagination.css',
 })
-export class TicketsPagination {
-  constructor(
-    private routerService: RouterService,
-    private route: ActivatedRoute,
-  ) {
-    this.route.queryParams.subscribe((params) => {
-      if (params['page']) {
-        const p = Number(params['page']);
+export class TicketsPagination implements OnChanges {
+  @Input() meta: IPaginationMeta | null = null;
 
-        if (isNaN(p)) {
-          this.routerService.redirect({
-            queryParams: {
-              page: 1,
-            },
-          });
+  protected readonly length = signal<number>(0);
 
-          return;
-        }
+  protected readonly index = signal<number>(0);
 
-        if (p <= 1) {
-          this.routerService.redirect({
-            queryParams: {
-              page: 1,
-            },
-          });
+  constructor(private routerService: RouterService) {}
 
-          return;
-        }
-
-        if (p > this.length) {
-          const currentPage = this.length;
-
-          this.routerService.redirect({
-            queryParams: {
-              page: currentPage,
-            },
-          });
-
-          this.page = currentPage;
-        } else {
-          this.page = p - 1;
-        }
-      }
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['meta'] && this.meta) {
+      this.length.set(this.meta.pages);
+      this.index.set(this.meta.page - 1);
+    }
   }
 
-  protected length = 64;
-
-  protected page = 0;
-
-  protected goToPage(index: number): void {
-    this.page = index;
+  protected goToPage(index: number) {
+    this.index.set(index);
 
     this.routerService.redirect({
       queryParams: {
-        page: this.page + 1,
+        page: index + 1,
       },
     });
+
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   }
 }
