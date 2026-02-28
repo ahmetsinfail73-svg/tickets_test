@@ -160,7 +160,6 @@ $resource = $segments[1] ?? null;
 $id = $segments[2] ?? null;
 $sub  = $segments[3] ?? null;
 
-
 if ($resource === 'tickets' && $sub === 'attachments') {
     switch ($method) {
         case 'POST':
@@ -168,6 +167,9 @@ if ($resource === 'tickets' && $sub === 'attachments') {
             break;
         case 'GET':
             require __DIR__ . '/api/attachments/attachments_get.php';
+            break;
+        case 'DELETE':
+            require __DIR__ . '/api/attachments/attachments_delete.php';
             break;
         default:
             respond(405, 'Метод не разрешён');
