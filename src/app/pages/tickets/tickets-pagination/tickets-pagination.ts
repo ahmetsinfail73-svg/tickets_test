@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, signal, SimpleChanges } from '@angular/core';
 import { TuiPagination } from '@taiga-ui/kit';
-import { IPaginationMeta } from '../../../models/ticket.model';
+import { IPaginationMeta } from '../../../models/pagination.model';
 import { RouterService } from '../../../services/router.service';
 
 @Component({
