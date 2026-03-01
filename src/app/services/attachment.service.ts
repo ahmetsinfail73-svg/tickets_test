@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from '../environmets/environmets';
 import { IAttachment } from '../models/attachment.model';
+import { ISuccessMessage } from '../models/success-message.model';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,9 @@ export class AttachmentService {
           }
         }),
       );
+  }
+
+  deleteAttachment(id: number) {
+    return this.http.delete<ISuccessMessage>(`${this.baseUrl}/${id}/attachments`);
   }
 }
