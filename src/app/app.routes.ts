@@ -6,7 +6,7 @@ import { Tickets } from './pages/tickets/tickets';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'tickets',
     component: Layout,
     children: [
       {
@@ -20,7 +20,7 @@ export const routes: Routes = [
         title: 'Создание тикета',
       },
       {
-        path: 'tickets/:id',
+        path: ':id',
         component: Ticket,
         title(route) {
           return `Тикет #${route.params['id']}`;
@@ -28,4 +28,5 @@ export const routes: Routes = [
       },
     ],
   },
+  { path: '**', redirectTo: 'tickets' },
 ];

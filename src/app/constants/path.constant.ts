@@ -1,7 +1,7 @@
 export class Path {
-  static readonly HOME = '/';
+  static readonly HOME = '/tickets';
 
-  static readonly CREATE_TICKET = '/create';
+  static readonly CREATE_TICKET = '/tickets/create';
 
   static TICKET(id: number) {
     return `/tickets/${id}`;
