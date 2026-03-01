@@ -48,4 +48,8 @@ export class AttachmentService {
   deleteAttachment(id: number) {
     return this.http.delete<ISuccessMessage>(`${this.baseUrl}/${id}/attachments`);
   }
+
+  downloadAttachment(id: number) {
+    return `${environment.API_URL}/attachments/download/${id}`;
+  }
 }
