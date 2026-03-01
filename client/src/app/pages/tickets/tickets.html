@@ -1,0 +1,19 @@
+<div class="tickets_header">
+  <app-heading title="Список заявок" description="Учет и анализ запросов технической поддержки" />
+
+  <a tuiButton appearance="primary" size="s" [routerLink]="createTicketPath">Создать заявку</a>
+</div>
+
+<app-tickets-filters />
+
+<tui-loader [showLoader]="isLoading.loading()" [overlay]="true" size="l">
+  @if (tickets().length > 0) {
+    <div class="tickets_data">
+      <app-tickets-list [tickets]="tickets()" />
+
+      <app-tickets-pagination [meta]="meta()" />
+    </div>
+  } @else {
+    <p class="empty">По заданным фильтрам заявок не найдено</p>
+  }
+</tui-loader>

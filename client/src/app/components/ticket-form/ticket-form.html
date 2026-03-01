@@ -1,0 +1,9 @@
+<form [formGroup]="form" class="ticket_form" (ngSubmit)="onSubmit()">
+  <div class="input_list">
+    @for (input of inputs; track input.label) {
+      <app-input [props]="input" />
+    }
+  </div>
+
+  <button tuiButton size="m" type="submit">{{ isUpdate ? 'Обновить' : 'Создать' }}</button>
+</form>

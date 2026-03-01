@@ -1,0 +1,61 @@
+<tui-loader [showLoader]="isLoading.loading()" [overlay]="true" size="l">
+  @if (ticket(); as ticket) {
+    <div class="ticket_page">
+      <div class="ticket_header">
+        <app-heading [title]="ticket.title" />
+
+        <div>
+          <div [appearance]="ticket.priority | appearance: priorityAppearance" tuiBadge>
+            {{ ticket.priority | uppercase }}
+          </div>
+
+          <div [appearance]="ticket.status | appearance: statusAppearance" tuiBadge>
+            {{ ticket.status | uppercase }}
+          </div>
+        </div>
+      </div>
+
+      <span class="ticket_date">Создано: {{ ticket.created_at | date: 'dd.MM.yyyy HH:mm' }}</span>
+
+      <div class="ticket_description">
+        <p>{{ ticket.description }}</p>
+      </div>
+
+      <div class="ticket_attachments">
+        <app-file-field [props]="fileProps" [onSuccessDelete]="onSuccess.bind(this)" />
+      </div>
+
+      <div class="ticket_action">
+        <button
+          tuiButton
+          type="button"
+          size="m"
+          (click)="expanded.set(!expanded())"
+          appearance="outline-grayscale"
+        >
+          Обновить информацию
+        </button>
+
+        <tui-expand [expanded]="expanded()">
+          <div class="ticket_expand">
+            <app-ticket-form
+              [ticket]="ticket"
+              [isUpdate]="true"
+              [onSuccess]="onSuccess.bind(this)"
+            />
+
+            <button
+              tuiButton
+              type="button"
+              size="m"
+              (click)="onDelete()"
+              appearance="action-destructive"
+            >
+              Удалить заявку
+            </button>
+          </div>
+        </tui-expand>
+      </div>
+    </div>
+  }
+</tui-loader>

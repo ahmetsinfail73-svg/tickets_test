@@ -1,0 +1,33 @@
+.tickets_filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .filters_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .filters_actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .tickets_filters {
+    .filters_list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .tickets_filters {
+    .filters_list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

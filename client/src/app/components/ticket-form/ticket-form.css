@@ -1,0 +1,11 @@
+.ticket_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .input_list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

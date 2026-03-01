@@ -1,0 +1,60 @@
+<header class="header page">
+  <a [routerLink]="homePath" class="header_logo link_opacity">Tickets</a>
+
+  <ng-container *ngTemplateOutlet="nav"></ng-container>
+
+  <button
+    appearance="icon"
+    iconStart="@tui.menu"
+    size="m"
+    class="burger"
+    tuiIconButton
+    type="button"
+    (click)="onClick()"
+  >
+    Меню
+  </button>
+</header>
+
+<tui-drawer *tuiPopup="open()" [overlay]="true" (click.self)="onClick()" class="drawer">
+  <div class="drawer_header">
+    <h2>Навигация</h2>
+
+    <button
+      appearance="icon"
+      iconStart="@tui.x"
+      size="m"
+      tuiIconButton
+      type="button"
+      (click)="onClick()"
+    >
+      Закрыть
+    </button>
+  </div>
+
+  <ng-container *ngTemplateOutlet="nav; context: { isMobile: true }"></ng-container>
+</tui-drawer>
+
+<ng-template #nav let-isMobile="isMobile">
+  <nav [class]="{ header_nav: true, mobile: isMobile }">
+    @for (link of links; track link.path) {
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        class="link_underline"
+        (click)="open.set(false)"
+        [routerLinkActiveOptions]="{
+          paths: 'exact',
+          queryParams: 'ignored',
+          fragment: 'ignored',
+          matrixParams: 'ignored',
+        }"
+        >{{ link.label }}</a
+      >
+    }
+
+    <button tuiButton type="button" appearance="icon" size="m" (click)="darkMode.set(!darkMode())">
+      <tui-icon [icon]="darkMode() ? '@tui.moon' : '@tui.sun'" />
+    </button>
+  </nav>
+</ng-template>

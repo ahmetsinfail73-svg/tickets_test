@@ -1,0 +1,15 @@
+<label tuiLabel class="input_item">
+  <span tuiTitle>{{ props.label }}</span>
+
+  <tui-textfield
+    tuiTextfieldSize="m"
+    iconStart="{{ props.icon }}"
+    tuiChevron
+    [tuiTextfieldCleaner]="false"
+    [stringify]="selectStringify"
+  >
+    <input placeholder="{{ props.label }}" tuiSelect [formControl]="props.control" />
+
+    <tui-data-list-wrapper *tuiTextfieldDropdown [items]="values" new />
+  </tui-textfield>
+</label>
