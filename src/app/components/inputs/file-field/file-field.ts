@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TuiIcon, TuiLink } from '@taiga-ui/core';
+import { TuiButton, TuiIcon, TuiLink } from '@taiga-ui/core';
 import { TuiFiles, TuiInputFiles, TuiProgressBar } from '@taiga-ui/kit';
 import { IAttachment } from '../../../models/attachment.model';
 import { AttachmentService } from '../../../services/attachment.service';
@@ -16,7 +16,15 @@ interface IFile {
 
 @Component({
   selector: 'app-file-field',
-  imports: [ReactiveFormsModule, TuiFiles, TuiIcon, TuiLink, TuiInputFiles, TuiProgressBar],
+  imports: [
+    ReactiveFormsModule,
+    TuiFiles,
+    TuiIcon,
+    TuiLink,
+    TuiInputFiles,
+    TuiProgressBar,
+    TuiButton,
+  ],
   templateUrl: './file-field.html',
   styleUrls: ['./file-field.css', '../input.css'],
 })
@@ -105,6 +113,10 @@ export class FileField implements OnInit {
         this.files.update((prev) => prev.filter((f) => f.id !== file.id));
       },
     });
+  }
+
+  protected downloadAttachment(file: IFile) {
+    window.location.href = this.attachmentService.downloadAttachment(file.id);
   }
 
   protected get getAccept() {

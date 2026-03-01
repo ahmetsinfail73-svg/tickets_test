@@ -2,7 +2,12 @@
   <span tuiTitle>{{ props.label }}</span>
 
   <label tuiInputFiles>
-    <input tuiInputFiles [formControl]="fileControl" (change)="onChange($event.target.files)" [accept]="getAccept" />
+    <input
+      tuiInputFiles
+      [formControl]="fileControl"
+      (change)="onChange($event.target.files)"
+      [accept]="getAccept"
+    />
     <ng-template let-dragged>
       @if (dragged) {
         <div class="file_content">
@@ -39,6 +44,12 @@
 
             <p>{{ file.progress }}%</p>
           </div>
+
+          @if (file.isDone) {
+            <button tuiButton size="m" type="button" (click)="downloadAttachment(file)">
+              Скачать
+            </button>
+          }
         </div>
       }
     </tui-files>
