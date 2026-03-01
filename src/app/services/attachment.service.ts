@@ -1,7 +1,7 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { environment } from '../environmets/environmets';
+import { environment } from '../environments/environments';
 import { IAttachment } from '../models/attachment.model';
 import { ISuccessMessage } from '../models/success-message.model';
 

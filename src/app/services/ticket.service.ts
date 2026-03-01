@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environmets/environmets';
+import { environment } from '../environment/environmets';
 import { ISuccessMessage } from '../models/success-message.model';
 import {
   ICreateTicketDto,
