@@ -9,6 +9,51 @@
 | База данных    | MySQL 8.0                                    |
 | Инфраструктура | Docker Compose (Nginx + PHP-FPM + MySQL)     |
 
+## Переменные среды
+
+### MySQL (`server/docker-compose.yml`)
+
+| Переменная            | Значение  | Описание            |
+| --------------------- | --------- | ------------------- |
+| `MYSQL_ROOT_PASSWORD` | `root`    | Пароль root         |
+| `MYSQL_DATABASE`      | `app`     | Имя базы данных     |
+| `MYSQL_USER`          | `appuser` | Пользователь БД     |
+| `MYSQL_PASSWORD`      | `secret`  | Пароль пользователя |
+
+### PHP (`server/backend/config/database.php`)
+
+| Параметр  | Значение  | Описание                    |
+| --------- | --------- | --------------------------- |
+| `host`    | `db`      | Хост MySQL (имя контейнера) |
+| `user`    | `appuser` | Пользователь БД             |
+| `pass`    | `secret`  | Пароль                      |
+| `db`      | `app`     | Имя базы данных             |
+| `charset` | `utf8mb4` | Кодировка соединения        |
+
+### PHP-лимиты (`server/docker/php/Dockerfile`)
+
+| Параметр              | Значение | Описание                    |
+| --------------------- | -------- | --------------------------- |
+| `upload_max_filesize` | `400M`   | Макс. размер загрузки файла |
+| `post_max_size`       | `400M`   | Макс. размер POST-запроса   |
+
+### Nginx (`server/docker/nginx/default.conf`)
+
+| Параметр                  | Значение | Описание                  |
+| ------------------------- | -------- | ------------------------- |
+| `client_max_body_size`    | `10m`    | Макс. размер тела запроса |
+| `client_body_buffer_size` | `10m`    | Буфер тела запроса        |
+
+### Frontend (`client/src/app/environments/environments.ts`)
+
+API URL задаётся в `src/app/environments/environments.ts`:
+
+```typescript
+export const environment = {
+	API_URL: 'http://localhost:8080/api',
+}
+```
+
 ## Структура проекта
 
 ```
