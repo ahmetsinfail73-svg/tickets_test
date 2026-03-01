@@ -50,6 +50,6 @@ export class AttachmentService {
   }
 
   downloadAttachment(id: number) {
-    return `${environment.API_URL}/attachments/download/${id}`;
+    return `${environment.API_URL}/attachments/${id}`;
   }
 }
