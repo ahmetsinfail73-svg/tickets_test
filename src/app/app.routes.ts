@@ -12,14 +12,19 @@ export const routes: Routes = [
       {
         path: '',
         component: Tickets,
+        title: 'Тикеты',
       },
       {
         path: 'create',
         component: CreateTicket,
+        title: 'Создание тикета',
       },
       {
         path: 'tickets/:id',
         component: Ticket,
+        title(route) {
+          return `Тикет #${route.params['id']}`;
+        },
       },
     ],
   },
